@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Dashboard de gerenciamento de projetos e tarefas"
+    >
+
+    <title>GestãoPro - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         TELA DE LOGIN
+    ================================================== -->
+
+    <section
+        class="login-screen"
+        id="loginScreen"
+        aria-labelledby="tituloLogin"
+    >
+
+        <div class="login-card">
+
+            <div class="login-logo">
+                📊
+            </div>
+
+            <h1 id="tituloLogin">
+                GestãoPro
+            </h1>
+
+            <p>
+                Entre para acessar seu dashboard
+            </p>
+
+
+            <form id="loginForm">
+
+                <div class="campo">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="seu@email.com"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div
+                    class="erro-login"
+                    id="erroLogin"
+                    role="alert"
+                ></div>
+
+
+                <button
+                    type="submit"
+                    class="btn-login"
+                >
+                    Entrar
+                </button>
+
+            </form>
+
+
+            <div class="login-info">
+
+                <strong>Demo:</strong>
+
+                <span>
+                    admin@email.com
+                </span>
+
+                <span>
+                    Senha: 123456
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         SISTEMA
+    ================================================== -->
+
+    <div
+        class="app"
+        id="app"
+        hidden
+    >
+
+
+        <!-- ==================================================
+             MENU LATERAL
+        ================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+            aria-label="Menu principal"
+        >
+
+            <div class="logo">
+
+                <span>📊</span>
+
+                <strong>
+                    GestãoPro
+                </strong>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <button
+                    class="menu-item ativo"
+                    data-page="dashboard"
+                >
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="projetos"
+                >
+                    <span>📁</span>
+                    <span>Projetos</span>
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="tarefas"
+                >
+                    <span>📋</span>
+                    <span>Tarefas</span>
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="equipe"
+                >
+                    <span>👥</span>
+                    <span>Equipe</span>
+                </button>
+
+
+                <button
+                    class="menu-item"
+                    data-page="configuracoes"
+                >
+                    <span>⚙️</span>
+                    <span>Configurações</span>
+                </button>
+
+            </nav>
+
+
+            <div class="usuario-menu">
+
+                <div class="avatar" id="avatarUsuario">
+                    A
+                </div>
+
+                <div class="dados-usuario">
+
+                    <strong id="nomeUsuario">
+                        Administrador
+                    </strong>
+
+                    <small id="nivelUsuario">
+                        Administrador
+                    </small>
+
+                </div>
+
+                <button
+                    class="btn-sair"
+                    id="btnSair"
+                    aria-label="Sair da conta"
+                    title="Sair"
+                >
+                    ↪
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ==================================================
+             CONTEÚDO
+        ================================================== -->
+
+        <main
+            class="main"
+            id="conteudo"
+        >
+
+            <!-- BOTÃO MOBILE -->
+
+            <button
+                class="btn-menu-mobile"
+                id="btnMenuMobile"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+
+            <!-- ==================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <section
+                class="page"
+                id="page-dashboard"
+            >
+
+                <header class="topo">
+
+                    <div>
+
+                        <span class="saudacao">
+                            Bem-vindo de volta 👋
+                        </span>
+
+                        <h1>
+                            Dashboard
+                        </h1>
+
+                        <p>
+                            Aqui está um resumo do seu sistema.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn-principal"
+                        id="btnNovaTarefaDashboard"
+                    >
+                        + Nova tarefa
+                    </button>
+
+                </header>
+
+
+
+                <!-- ESTATÍSTICAS -->
+
+                <section
+                    class="cards"
+                    aria-label="Estatísticas"
+                >
+
+                    <article class="card">
+
+                        <div class="card-icone azul">
+                            📁
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Projetos
+                            </span>
+
+                            <strong id="estatProjetos">
+                                0
+                            </strong>
+
+                            <small>
+                                Projetos cadastrados
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-icone roxo">
+                            📋
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Tarefas
+                            </span>
+
+                            <strong id="estatTarefas">
+                                0
+                            </strong>
+
+                            <small>
+                                Total de tarefas
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-icone verde">
+                            ✅
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Concluídas
+                            </span>
+
+                            <strong id="estatConcluidas">
+                                0
+                            </strong>
+
+                            <small>
+                                Tarefas finalizadas
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-icone vermelho">
+                            ⚠️
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Pendentes
+                            </span>
+
+                            <strong id="estatPendentes">
+                                0
+                            </strong>
+
+                            <small>
+                                Precisam de atenção
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+
+                <!-- ALERTAS -->
+
+                <section class="box alertas">
+
+                    <div class="box-titulo">
+
+                        <div>
+
+                            <h2>
+                                Alertas
+                            </h2>
+
+                            <p>
+                                Informações que precisam da sua atenção
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="listaAlertas">
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- GRID -->
+
+                <section class="dashboard-grid">
+
+
+                    <!-- PROJETOS -->
+
+                    <div class="box">
+
+                        <div class="box-titulo">
+
+                            <div>
+
+                                <h2>
+                                    Projetos recentes
+                                </h2>
+
+                                <p>
+                                    Acompanhe seus projetos
+                                </p>
+
+                            </div>
+
+                            <button
+                                class="btn-link"
+                                data-page="projetos"
+                            >
+                                Ver todos
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="dashboardProjetos"
+                            class="lista"
+                        >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TAREFAS -->
+
+                    <div class="box">
+
+                        <div class="box-titulo">
+
+                            <div>
+
+                                <h2>
+                                    Tarefas recentes
+                                </h2>
+
+                                <p>
+                                    Atividades do sistema
+                                </p>
+
+                            </div>
+
+                            <button
+                                class="btn-link"
+                                data-page="tarefas"
+                            >
+                                Ver todas
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="dashboardTarefas"
+                            class="lista"
+                        >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- GRÁFICO -->
+
+                <section class="box grafico-box">
+
+                    <div class="box-titulo">
+
+                        <div>
+
+                            <h2>
+                                Desempenho semanal
+                            </h2>
+
+                            <p>
+                                Tarefas concluídas durante a semana
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="grafico">
+
+                        <div class="eixo">
+
+                            <span>10</span>
+                            <span>8</span>
+                            <span>6</span>
+                            <span>4</span>
+                            <span>2</span>
+                            <span>0</span>
+
+                        </div>
+
+
+                        <div class="colunas">
+
+                            <div class="coluna">
+                                <div
+                                    class="barra-grafico"
+                                    style="height: 40%"
+                                    data-valor="4"
+                                ></div>
+                                <span>Seg</span>
+                            </div>
+
+
+                            <div class="coluna">
+                                <div
+                                    class="barra-grafico"
+                                    style="height: 60%"
+                                    data-valor="6"
+                                ></div>
+                                <span>Ter</span>
+                            </div>
+
+
+                            <div class="coluna">
+                                <div
+                                    class="barra-grafico"
+                                    style="height: 80%"
+                                    data-valor="8"
+                                ></div>
+                                <span>Qua</span>
+                            </div>
+
+
+                            <div class="coluna">
+                                <div
+                                    class="barra-grafico"
+                                    style="height: 50%"
+                                    data-valor="5"
+                                ></div>
+                                <span>Qui</span>
+                            </div>
+
+
+                            <div class="coluna">
+                                <div
+                                    class="barra-grafico"
+                                    style="height: 90%"
+                                    data-valor="9"
+                                ></div>
+                                <span>Sex</span>
+                            </div>
+
+
+                            <div class="coluna">
+                                <div
+                                    class="barra-grafico"
+                                    style="height: 30%"
+                                    data-valor="3"
+                                ></div>
+                                <span>Sáb</span>
+                            </div>
+
+
+                            <div class="coluna">
+                                <div
+                                    class="barra-grafico"
+                                    style="height: 20%"
+                                    data-valor="2"
+                                ></div>
+                                <span>Dom</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 PROJETOS
+            ================================================== -->
+
+            <section
+                class="page"
+                id="page-projetos"
+                hidden
+            >
+
+                <header class="topo">
+
+                    <div>
+
+                        <h1>
+                            Projetos
+                        </h1>
+
+                        <p>
+                            Crie e gerencie seus projetos.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn-principal"
+                        id="btnNovoProjeto"
+                    >
+                        + Novo projeto
+                    </button>
+
+                </header>
+
+
+                <section class="box">
+
+                    <div
+                        class="tabela-container"
+                    >
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Projeto
+                                    </th>
+
+                                    <th>
+                                        Responsável
+                                    </th>
+
+                                    <th>
+                                        Progresso
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Ações
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody
+                                id="tabelaProjetos"
+                            >
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 TAREFAS
+            ================================================== -->
+
+            <section
+                class="page"
+                id="page-tarefas"
+                hidden
+            >
+
+                <header class="topo">
+
+                    <div>
+
+                        <h1>
+                            Tarefas
+                        </h1>
+
+                        <p>
+                            Gerencie todas as tarefas.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn-principal"
+                        id="btnNovaTarefa"
+                    >
+                        + Nova tarefa
+                    </button>
+
+                </header>
+
+
+                <section class="box">
+
+                    <div
+                        class="tabela-container"
+                    >
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Tarefa
+                                    </th>
+
+                                    <th>
+                                        Projeto
+                                    </th>
+
+                                    <th>
+                                        Responsável
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Ações
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody
+                                id="tabelaTarefas"
+                            >
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 EQUIPE
+            ================================================== -->
+
+            <section
+                class="page"
+                id="page-equipe"
+                hidden
+            >
+
+                <header class="topo">
+
+                    <div>
+
+                        <h1>
+                            Equipe
+                        </h1>
+
+                        <p>
+                            Usuários e níveis de acesso.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+                <section class="cards-equipe">
+
+
+                    <article class="membro">
+
+                        <div class="avatar grande">
+                            A
+                        </div>
+
+                        <h3>
+                            Administrador
+                        </h3>
+
+                        <p>
+                            admin@email.com
+                        </p>
+
+                        <span class="nivel admin">
+                            Administrador
+                        </span>
+
+                    </article>
+
+
+                    <article class="membro">
+
+                        <div class="avatar grande">
+                            G
+                        </div>
+
+                        <h3>
+                            Gerente
+                        </h3>
+
+                        <p>
+                            gerente@email.com
+                        </p>
+
+                        <span class="nivel gerente">
+                            Gerente
+                        </span>
+
+                    </article>
+
+
+                    <article class="membro">
+
+                        <div class="avatar grande">
+                            U
+                        </div>
+
+                        <h3>
+                            Usuário
+                        </h3>
+
+                        <p>
+                            usuario@email.com
+                        </p>
+
+                        <span class="nivel usuario">
+                            Usuário
+                        </span>
+
+                    </article>
+
+
+                </section>
+
+            </section>
+
+
+
+            <!-- ==================================================
+                 CONFIGURAÇÕES
+            ================================================== -->
+
+            <section
+                class="page"
+                id="page-configuracoes"
+                hidden
+            >
+
+                <header class="topo">
+
+                    <div>
+
+                        <h1>
+                            Configurações
+                        </h1>
+
+                        <p>
+                            Configure seu sistema.
+                        </p>
+
+                    </div>
+
+                </header>
+
+
+                <section class="box configuracoes">
+
+                    <h2>
+                        Acessibilidade
+                    </h2>
+
+                    <label class="config-item">
+
+                        <span>
+                            Aumentar tamanho do texto
+                        </span>
+
+                        <input
+                            type="checkbox"
+                            id="aumentarTexto"
+                        >
+
+                    </label>
+
+
+                    <label class="config-item">
+
+                        <span>
+                            Alto contraste
+                        </span>
+
+                        <input
+                            type="checkbox"
+                            id="altoContraste"
+                        >
+
+                    </label>
+
+
+                    <hr>
+
+
+                    <h2>
+                        Informações do sistema
+                    </h2>
+
+                    <p>
+                        GestãoPro - Sistema de gerenciamento
+                        de projetos e tarefas.
+                    </p>
+
+                    <p>
+                        Versão: 1.0.0
+                    </p>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         MODAL DE TAREFA
+    ================================================== -->
+
+    <div
+        class="modal"
+        id="modalTarefa"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModalTarefa"
+        >
+
+            <button
+                class="fechar-modal"
+                id="fecharModalTarefa"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+
+            <h2 id="tituloModalTarefa">
+                Nova tarefa
+            </h2>
+
+
+            <form id="formTarefa">
+
+                <input
+                    type="hidden"
+                    id="idTarefa"
+                >
+
+
+                <div class="campo">
+
+                    <label for="nomeTarefa">
+                        Nome da tarefa
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeTarefa"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="projetoTarefa">
+                        Projeto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="projetoTarefa"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="responsavelTarefa">
+                        Responsável
+                    </label>
+
+                    <input
+                        type="text"
+                        id="responsavelTarefa"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="statusTarefa">
+                        Status
+                    </label>
+
+                    <select id="statusTarefa">
+
+                        <option value="pendente">
+                            Pendente
+                        </option>
+
+                        <option value="andamento">
+                            Em andamento
+                        </option>
+
+                        <option value="concluida">
+                            Concluída
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-principal largura-total"
+                >
+                    Salvar tarefa
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         MODAL DE PROJETO
+    ================================================== -->
+
+    <div
+        class="modal"
+        id="modalProjeto"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModalProjeto"
+        >
+
+            <button
+                class="fechar-modal"
+                id="fecharModalProjeto"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+
+            <h2 id="tituloModalProjeto">
+                Novo projeto
+            </h2>
+
+
+            <form id="formProjeto">
+
+                <input
+                    type="hidden"
+                    id="idProjeto"
+                >
+
+
+                <div class="campo">
+
+                    <label for="nomeProjeto">
+                        Nome do projeto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeProjeto"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="responsavelProjeto">
+                        Responsável
+                    </label>
+
+                    <input
+                        type="text"
+                        id="responsavelProjeto"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="progressoProjeto">
+                        Progresso (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="progressoProjeto"
+                        min="0"
+                        max="100"
+                        value="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="statusProjeto">
+                        Status
+                    </label>
+
+                    <select id="statusProjeto">
+
+                        <option value="planejamento">
+                            Planejamento
+                        </option>
+
+                        <option value="andamento">
+                            Em andamento
+                        </option>
+
+                        <option value="concluido">
+                            Concluído
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-principal largura-total"
+                >
+                    Salvar projeto
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
